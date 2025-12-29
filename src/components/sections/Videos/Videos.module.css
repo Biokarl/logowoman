@@ -1,0 +1,171 @@
+.videos {
+  /* Прозрачный фон для показа общего серого фона с пятнами */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 200px);
+  gap: 16px;
+}
+
+.videoCard {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  cursor: pointer;
+  background: #000;
+}
+
+.featured {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.videoPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+
+.videoCard:hover .overlay {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.playBtn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-active);
+  transition: all 0.3s ease;
+  padding-left: 4px;
+}
+
+.featured .playBtn {
+  width: 80px;
+  height: 80px;
+}
+
+.videoCard:hover .playBtn {
+  transform: scale(1.1);
+  background: var(--accent-primary);
+}
+
+.videoTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  text-align: center;
+  padding: 0 16px;
+}
+
+.featured .videoTitle {
+  font-size: 18px;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.modalContent {
+  position: relative;
+  max-width: 900px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: -50px;
+  right: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.closeBtn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.modalVideo {
+  width: 100%;
+  max-height: 70vh;
+  border-radius: var(--border-radius);
+  background: #000;
+}
+
+.modalTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--white);
+  text-align: center;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 180px);
+  }
+  
+  .featured {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  
+  .videoCard {
+    aspect-ratio: 16/9;
+  }
+  
+  .featured {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+
+  .closeBtn {
+    top: -60px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

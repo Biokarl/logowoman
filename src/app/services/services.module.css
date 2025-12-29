@@ -1,0 +1,175 @@
+.page {
+  padding-top: var(--header-height);
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+.hero {
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.services {
+  padding-top: 0;
+}
+
+.servicesList {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.serviceCard {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  padding: 0;
+  overflow: hidden;
+}
+
+.serviceCard.reversed {
+  direction: rtl;
+}
+
+.serviceCard.reversed > * {
+  direction: ltr;
+}
+
+.cardContent {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.cardDesc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.features li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text-primary);
+}
+
+.features li svg {
+  flex-shrink: 0;
+}
+
+.specialist {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  margin-top: auto;
+  border-top: 1px solid #eee;
+}
+
+.specialistPhoto {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.specialistInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.specialistName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.specialistRole {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.cardImage {
+  position: relative;
+  min-height: 350px;
+}
+
+.imagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  opacity: 0.8;
+}
+
+@media (max-width: 1000px) {
+  .serviceCard {
+    grid-template-columns: 1fr;
+  }
+
+  .serviceCard.reversed {
+    direction: ltr;
+  }
+
+  .cardImage {
+    min-height: 250px;
+    order: -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .cardContent {
+    padding: 24px;
+  }
+
+  .cardTitle {
+    font-size: 24px;
+  }
+}
+

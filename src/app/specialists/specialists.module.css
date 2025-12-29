@@ -1,0 +1,368 @@
+.page {
+  padding-top: var(--header-height);
+  scroll-margin-top: calc(var(--header-height) + 20px);
+}
+
+.hero {
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.specialists {
+  padding-top: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.card {
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+.photoWrapper {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+}
+
+.photoPlaceholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}
+
+.info {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.specialty {
+  font-size: 15px;
+  color: var(--text-active);
+  font-weight: 500;
+}
+
+.experience {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.reviews {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.reviews span {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.detailsBtn {
+  margin-top: 16px;
+  padding: 12px 24px;
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.detailsBtn:hover {
+  background: #9ee4f7;
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal {
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: var(--border-radius);
+  max-width: 700px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.closeBtn:hover {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.modalContent {
+  padding: 32px;
+}
+
+.modalHeader {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.modalPhoto {
+  width: 160px;
+  height: 160px;
+  border-radius: var(--border-radius);
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.modalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modalName {
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.modalSpecialty {
+  font-size: 18px;
+  color: var(--text-active);
+  font-weight: 500;
+}
+
+.modalExperience {
+  font-size: 15px;
+  color: var(--text-secondary);
+}
+
+.modalActions {
+  margin-top: 16px;
+}
+
+.messageBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: var(--accent-secondary);
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.messageBtn:hover {
+  background: #ffc0ed;
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.modalSection h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.modalSection p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.skillsList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.skillsList li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.educationList li {
+  font-size: 14px;
+  color: var(--text-secondary);
+  padding-left: 16px;
+  position: relative;
+}
+
+.educationList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+}
+
+.reviewsInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.reviewsCount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--text-secondary);
+}
+
+.leaveReviewBtn {
+  padding: 10px 20px;
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.leaveReviewBtn:hover {
+  background: #9ee4f7;
+}
+
+@media (max-width: 1000px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .modalOverlay {
+    align-items: flex-start;
+    padding-top: calc(var(--header-height) + 20px);
+  }
+
+  .modal {
+    max-height: calc(100vh - var(--header-height) - 40px);
+  }
+
+  .modalHeader {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modalPhoto {
+    width: 120px;
+    height: 120px;
+  }
+
+  .skillsList {
+    grid-template-columns: 1fr;
+  }
+
+  .reviewsInfo {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 32px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modalContent {
+    padding: 24px;
+  }
+
+  .modalName {
+    font-size: 24px;
+  }
+}
+
