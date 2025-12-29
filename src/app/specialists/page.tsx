@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './specialists.module.css'
@@ -90,7 +90,7 @@ const specialists = [
 
 const YANDEX_REVIEWS_URL = 'https://yandex.ru/maps/org/yana_logowoman_korrektsionny_tsentr/143810668969/reviews/?add-review=true&ll=39.010518%2C45.066998&mode=search&sctx=ZAAAAAgBEAAaKAoSCXpwd9ZufUNAEQAce%2FZchEZAEhIJutxgqMMKpz8RgQncupunij8iBgABAgMEBSgKOABAI0gBagJydZ0BzczMPaABAKgBAL0BLIsN78IBBqnTot6XBIICGdGP0L3RiyDQvtGA0LvQvtCy0YHQutC%2B0LmKAgCSAgYxMDgyMTSaAgxkZXNrdG9wLW1hcHM%3D&sll=39.010518%2C45.066998&sspn=0.003322%2C0.000960&tab=reviews&text=яны%20орловской&z=19.72'
 
-export default function SpecialistsPage() {
+function SpecialistsContent() {
   const searchParams = useSearchParams()
   const [selectedSpecialist, setSelectedSpecialist] = useState<typeof specialists[0] | null>(null)
 
@@ -301,6 +301,14 @@ export default function SpecialistsPage() {
         )}
       </AnimatePresence>
     </div>
+  )
+}
+
+export default function SpecialistsPage() {
+  return (
+    <Suspense fallback={<div className={styles.page}><div className="container">Загрузка...</div></div>}>
+      <SpecialistsContent />
+    </Suspense>
   )
 }
 
