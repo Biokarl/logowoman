@@ -2,6 +2,7 @@
 
 import { useState, useEffect, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './specialists.module.css'
 
@@ -11,6 +12,7 @@ const specialists = [
     name: 'Яна Орловская',
     specialty: 'Логопед-дефектолог',
     experience: '12 лет опыта',
+    photo: '/images/hero/Орловская_Яна.jpg',
     education: ['МГУ им. Ломоносова, факультет психологии', 'Дополнительное образование по нейропсихологии'],
     description: 'Основатель центра Logowoman. Специализируется на работе с детьми с задержкой речевого развития, дизартрией, алалией. Автор методики комплексной речевой коррекции.',
     skills: [
@@ -27,6 +29,7 @@ const specialists = [
     name: 'Елена Смирнова',
     specialty: 'Детский психолог',
     experience: '8 лет опыта',
+    photo: '/images/specialists/Специалист_1.jpg',
     education: ['РГГУ, факультет психологии', 'Курсы детской психотерапии'],
     description: 'Специалист по детской психологии. Работает с эмоциональными и поведенческими проблемами, помогает детям адаптироваться к детскому саду и школе.',
     skills: [
@@ -43,6 +46,7 @@ const specialists = [
     name: 'Марина Козлова',
     specialty: 'Нейропсихолог',
     experience: '10 лет опыта',
+    photo: '/images/specialists/Специалист_2.jpg',
     education: ['Санкт-Петербургский государственный университет', 'Специализация по нейропсихологии детского возраста'],
     description: 'Эксперт в области нейропсихологической диагностики и коррекции. Помогает детям с трудностями обучения, СДВГ, нарушениями внимания и памяти.',
     skills: [
@@ -59,6 +63,7 @@ const specialists = [
     name: 'Анна Петрова',
     specialty: 'Логопед',
     experience: '6 лет опыта',
+    photo: '/images/specialists/Специалист_3.jpg',
     education: ['Кубанский государственный университет', 'Курсы повышения квалификации по логопедии'],
     description: 'Логопед с опытом работы в детских садах и школах. Специализируется на постановке звуков и развитии фонематического слуха у детей.',
     skills: [
@@ -75,6 +80,7 @@ const specialists = [
     name: 'Ольга Иванова',
     specialty: 'Дефектолог',
     experience: '9 лет опыта',
+    photo: '/images/specialists/Специалист_4.jpg',
     education: ['Московский педагогический университет', 'Специализация по коррекционной педагогике'],
     description: 'Дефектолог с большим опытом работы с детьми с ОВЗ. Специализируется на работе с задержкой психического развития и расстройствами аутистического спектра.',
     skills: [
@@ -85,6 +91,74 @@ const specialists = [
       'АВА-терапия'
     ],
     reviewsCount: 112
+  },
+  {
+    id: 6,
+    name: 'Наталья Волкова',
+    specialty: 'Логопед',
+    experience: '7 лет опыта',
+    photo: '/images/specialists/Специалист_5.jpg',
+    education: ['Кубанский государственный университет', 'Курсы по детской логопедии'],
+    description: 'Логопед с опытом работы с детьми раннего возраста. Специализируется на запуске речи и коррекции звукопроизношения.',
+    skills: [
+      'Запуск речи',
+      'Коррекция звукопроизношения',
+      'Развитие речевого дыхания',
+      'Артикуляционная гимнастика',
+      'Работа с заиканием'
+    ],
+    reviewsCount: 95
+  },
+  {
+    id: 7,
+    name: 'Ирина Соколова',
+    specialty: 'Детский психолог',
+    experience: '5 лет опыта',
+    photo: '/images/specialists/Специалист_6.jpg',
+    education: ['Южный федеральный университет', 'Специализация по детской психологии'],
+    description: 'Детский психолог, работающий с эмоциональными нарушениями и проблемами поведения. Помогает детям справляться со стрессом и тревожностью.',
+    skills: [
+      'Арт-терапия',
+      'Песочная терапия',
+      'Работа с тревожностью',
+      'Коррекция агрессии',
+      'Развитие эмоционального интеллекта'
+    ],
+    reviewsCount: 78
+  },
+  {
+    id: 8,
+    name: 'Татьяна Морозова',
+    specialty: 'Дефектолог',
+    experience: '8 лет опыта',
+    photo: '/images/specialists/Специалист_7.jpg',
+    education: ['Московский государственный педагогический университет', 'Курсы по работе с детьми с ОВЗ'],
+    description: 'Дефектолог с опытом работы в специализированных образовательных учреждениях. Помогает детям с особенностями развития адаптироваться и успешно учиться.',
+    skills: [
+      'Работа с ОВЗ',
+      'Развитие мелкой моторики',
+      'Когнитивное развитие',
+      'Подготовка к школе',
+      'Работа с дисграфией'
+    ],
+    reviewsCount: 103
+  },
+  {
+    id: 9,
+    name: 'Светлана Белова',
+    specialty: 'Нейропсихолог',
+    experience: '6 лет опыта',
+    photo: '/images/specialists/Специалист_8.jpg',
+    education: ['Кубанский государственный университет', 'Курсы по нейропсихологии'],
+    description: 'Нейропсихолог с опытом работы с детьми школьного возраста. Специализируется на коррекции трудностей обучения и развитии когнитивных функций.',
+    skills: [
+      'Нейропсихологическая коррекция',
+      'Развитие памяти',
+      'Работа с дисграфией',
+      'Развитие пространственного мышления',
+      'Коррекция дислексии'
+    ],
+    reviewsCount: 89
   },
 ]
 
@@ -160,12 +234,13 @@ function SpecialistsContent() {
                 onClick={() => setSelectedSpecialist(specialist)}
               >
                 <div className={styles.photoWrapper}>
-                  <div className={styles.photoPlaceholder}>
-                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                      <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                  </div>
+                  <Image
+                    src={specialist.photo}
+                    alt={specialist.name}
+                    fill
+                    className={styles.photo}
+                    sizes="(max-width: 768px) 100vw, 300px"
+                  />
                 </div>
                 
                 <div className={styles.info}>
@@ -220,10 +295,13 @@ function SpecialistsContent() {
               <div className={styles.modalContent}>
                 <div className={styles.modalHeader}>
                   <div className={styles.modalPhoto}>
-                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                      <circle cx="12" cy="7" r="4"/>
-                    </svg>
+                    <Image
+                      src={selectedSpecialist.photo}
+                      alt={selectedSpecialist.name}
+                      fill
+                      className={styles.modalPhotoImg}
+                      sizes="150px"
+                    />
                   </div>
                   <div className={styles.modalInfo}>
                     <h2 className={styles.modalName}>{selectedSpecialist.name}</h2>

@@ -17,7 +17,7 @@ const specialists = [
     name: 'Яна Орловская',
     specialty: 'Логопед-дефектолог',
     experience: '12 лет опыта',
-    photo: '/images/specialists/specialist-1.jpg',
+    photo: '/images/hero/Орловская_Яна.jpg',
     reviewsCount: 156
   },
   {
@@ -25,7 +25,7 @@ const specialists = [
     name: 'Елена Смирнова',
     specialty: 'Детский психолог',
     experience: '8 лет опыта',
-    photo: '/images/specialists/specialist-2.jpg',
+    photo: '/images/specialists/Специалист_1.jpg',
     reviewsCount: 98
   },
   {
@@ -33,7 +33,7 @@ const specialists = [
     name: 'Марина Козлова',
     specialty: 'Нейропсихолог',
     experience: '10 лет опыта',
-    photo: '/images/specialists/specialist-3.jpg',
+    photo: '/images/specialists/Специалист_2.jpg',
     reviewsCount: 124
   },
   {
@@ -41,7 +41,7 @@ const specialists = [
     name: 'Анна Петрова',
     specialty: 'Логопед',
     experience: '6 лет опыта',
-    photo: '/images/specialists/specialist-4.jpg',
+    photo: '/images/specialists/Специалист_3.jpg',
     reviewsCount: 87
   },
   {
@@ -49,8 +49,40 @@ const specialists = [
     name: 'Ольга Иванова',
     specialty: 'Дефектолог',
     experience: '9 лет опыта',
-    photo: '/images/specialists/specialist-5.jpg',
+    photo: '/images/specialists/Специалист_4.jpg',
     reviewsCount: 112
+  },
+  {
+    id: 6,
+    name: 'Наталья Волкова',
+    specialty: 'Логопед',
+    experience: '7 лет опыта',
+    photo: '/images/specialists/Специалист_5.jpg',
+    reviewsCount: 95
+  },
+  {
+    id: 7,
+    name: 'Ирина Соколова',
+    specialty: 'Детский психолог',
+    experience: '5 лет опыта',
+    photo: '/images/specialists/Специалист_6.jpg',
+    reviewsCount: 78
+  },
+  {
+    id: 8,
+    name: 'Татьяна Морозова',
+    specialty: 'Дефектолог',
+    experience: '8 лет опыта',
+    photo: '/images/specialists/Специалист_7.jpg',
+    reviewsCount: 103
+  },
+  {
+    id: 9,
+    name: 'Светлана Белова',
+    specialty: 'Нейропсихолог',
+    experience: '6 лет опыта',
+    photo: '/images/specialists/Специалист_8.jpg',
+    reviewsCount: 89
   },
 ]
 
@@ -128,12 +160,13 @@ export default function Specialists() {
               <SwiperSlide key={specialist.id}>
                 <div className={`card ${styles.card}`}>
                   <div className={styles.photoWrapper}>
-                    <div className={styles.photoPlaceholder}>
-                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                      </svg>
-                    </div>
+                    <Image
+                      src={specialist.photo}
+                      alt={specialist.name}
+                      fill
+                      className={styles.photo}
+                      sizes="(max-width: 768px) 100vw, 300px"
+                    />
                   </div>
                   
                   <div className={styles.info}>

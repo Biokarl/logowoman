@@ -1,12 +1,43 @@
 .videos {
-  /* Прозрачный фон для показа общего серого фона с пятнами */
+  overflow: hidden;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 200px);
-  gap: 16px;
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 40px;
+  gap: 24px;
+}
+
+.swiper {
+  overflow: visible !important;
+  padding: 40px 0;
+  width: 100%;
+}
+
+.slide {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+  will-change: transform, opacity;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 769px) {
+  .slide {
+    opacity: 0.6;
+    transform: scale(0.9);
+    transform-origin: left center;
+    justify-content: flex-start;
+  }
+
+  .slide:global(.swiper-slide-active) {
+    opacity: 1;
+    transform: scale(1.1);
+    z-index: 10;
+    margin-right: 70px !important;
+  }
 }
 
 .videoCard {
@@ -15,11 +46,7 @@
   overflow: hidden;
   cursor: pointer;
   background: #000;
-}
-
-.featured {
-  grid-column: span 2;
-  grid-row: span 2;
+  aspect-ratio: 16/9;
 }
 
 .videoPreview {
@@ -58,10 +85,6 @@
   padding-left: 4px;
 }
 
-.featured .playBtn {
-  width: 80px;
-  height: 80px;
-}
 
 .videoCard:hover .playBtn {
   transform: scale(1.1);
@@ -76,8 +99,32 @@
   padding: 0 16px;
 }
 
-.featured .videoTitle {
-  font-size: 18px;
+.navigation {
+  display: flex;
+  gap: 12px;
+}
+
+.navBtn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.navBtn:hover:not(.navBtnDisabled) {
+  background: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+.navBtnDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 /* Modal */
@@ -136,33 +183,31 @@
   text-align: center;
 }
 
-@media (max-width: 1000px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 180px);
+@media (max-width: 768px) {
+  .swiper {
+    padding: 10px 0 30px;
+    overflow: visible !important;
   }
-  
-  .featured {
-    grid-column: span 2;
-    grid-row: span 1;
+
+  .slide {
+    opacity: 1;
+    transform: none;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .navigation {
+    justify-content: center;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
-  }
-  
-  .videoCard {
-    aspect-ratio: 16/9;
-  }
-  
-  .featured {
-    grid-column: span 1;
-    grid-row: span 1;
-  }
-
   .closeBtn {
     top: -60px;
     right: 50%;

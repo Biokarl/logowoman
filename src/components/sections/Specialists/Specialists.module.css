@@ -41,23 +41,26 @@
 
 .swiper {
   overflow: visible !important;
-  padding-bottom: 8px;
 }
 
 .card {
+  position: relative;
   height: 100%;
-  min-height: 340px;
+  min-height: 200px;
   padding: 0;
+  padding-left: 140px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
 .photoWrapper {
-  position: relative;
-  width: 100%;
-  height: 180px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 140px;
   overflow: hidden;
+  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
 }
 
 .photoPlaceholder {
@@ -70,11 +73,17 @@
   color: var(--white);
 }
 
+.photo {
+  object-fit: cover;
+  object-position: center 20%;
+}
+
 .info {
-  padding: 20px;
+  padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  height: 100%;
+  justify-content: center;
 }
 
 .name {
@@ -165,5 +174,6 @@
   .navigation {
     justify-content: center;
   }
+
 }
 

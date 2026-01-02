@@ -42,7 +42,7 @@ export default function Hero() {
               <span className={styles.statLabel}>счастливых семей</span>
             </div>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>8</span>
+              <span className={styles.statNumber}>9</span>
               <span className={styles.statLabel}>специалистов</span>
             </div>
           </div>
@@ -60,8 +60,8 @@ export default function Hero() {
           </div>
           <div className={styles.imageContainer}>
             <Image
-              src="/images/hero/main-specialist.jpg.jpg"
-              alt="Главный специалист Logowoman"
+              src="/images/hero/Орловская_Яна.jpg"
+              alt="Яна Орловская - основатель центра Logowoman"
               fill
               priority
               className={styles.image}
