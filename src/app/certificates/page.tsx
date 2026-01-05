@@ -1,27 +1,38 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './certificates.module.css'
 
-// Заглушки для сертификатов
-const certificates = [
-  { id: 1, title: 'Диплом о высшем образовании', specialist: 'Яна Орловская' },
-  { id: 2, title: 'Сертификат повышения квалификации', specialist: 'Яна Орловская' },
-  { id: 3, title: 'Диплом логопеда-дефектолога', specialist: 'Яна Орловская' },
-  { id: 4, title: 'Сертификат по нейропсихологии', specialist: 'Марина Козлова' },
-  { id: 5, title: 'Диплом детского психолога', specialist: 'Елена Смирнова' },
-  { id: 6, title: 'Сертификат по игровой терапии', specialist: 'Елена Смирнова' },
-  { id: 7, title: 'Диплом дефектолога', specialist: 'Ольга Иванова' },
-  { id: 8, title: 'Сертификат по АВА-терапии', specialist: 'Ольга Иванова' },
-  { id: 9, title: 'Диплом логопеда', specialist: 'Анна Петрова' },
-  { id: 10, title: 'Сертификат по коррекции дислексии', specialist: 'Анна Петрова' },
-  { id: 11, title: 'Сертификат по сенсорной интеграции', specialist: 'Марина Козлова' },
-  { id: 12, title: 'Диплом о переподготовке', specialist: 'Яна Орловская' },
+type Certificate = {
+  id: number
+  title: string
+  specialist: string
+  image?: string
+  orientation?: 'portrait' | 'landscape'
+}
+
+// Сертификаты (с изображениями и заглушки)
+const certificates: Certificate[] = [
+  // Реальные сертификаты
+  { id: 1, title: 'Диплом о профессиональной переподготовке', specialist: 'Яна Орловская', image: '/images/certificates/Диплом_о_проф_переподготовке_Практическая_нейропсихология.jpg', orientation: 'landscape' },
+  { id: 2, title: 'Сертификат Нейро Москва', specialist: 'Яна Орловская', image: '/images/certificates/СЕРТИФИКАТ-Нейро-Москва.jpg', orientation: 'portrait' },
+  { id: 3, title: 'Удостоверение повышения квалификации', specialist: 'Яна Орловская', image: '/images/certificates/Уд_пов_квалификации_Формирование_пространсвенных_представлений.jpg', orientation: 'landscape' },
+  { id: 4, title: 'Удостоверение повышения квалификации', specialist: 'Яна Орловская', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квал_Мячики_мешочки.jpg', orientation: 'landscape' },
+  { id: 5, title: 'Удостоверение повышения квалификации', specialist: 'Яна Орловская', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квалиф_Методы_Ранней_Нейродиагностики.jpg', orientation: 'landscape' },
+  // Заглушки для будущих сертификатов
+  { id: 6, title: 'Диплом о высшем образовании', specialist: 'Яна Орловская' },
+  { id: 7, title: 'Сертификат повышения квалификации', specialist: 'Яна Орловская' },
+  { id: 8, title: 'Диплом логопеда-дефектолога', specialist: 'Яна Орловская' },
+  { id: 9, title: 'Сертификат по нейропсихологии', specialist: 'Марина Козлова' },
+  { id: 10, title: 'Диплом детского психолога', specialist: 'Елена Смирнова' },
+  { id: 11, title: 'Сертификат по игровой терапии', specialist: 'Елена Смирнова' },
+  { id: 12, title: 'Диплом дефектолога', specialist: 'Ольга Иванова' },
 ]
 
 export default function CertificatesPage() {
-  const [selectedCertificate, setSelectedCertificate] = useState<typeof certificates[0] | null>(null)
+  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null)
 
   // Блокировка скролла при открытии модального окна
   useEffect(() => {
@@ -78,13 +89,25 @@ export default function CertificatesPage() {
                 transition={{ duration: 0.4, delay: 0.05 * index }}
                 onClick={() => setSelectedCertificate(cert)}
               >
-                <div className={styles.imagePlaceholder}>
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                </div>
+                {cert.image ? (
+                  <div className={`${styles.imageWrapper} ${cert.orientation === 'landscape' ? styles.imageWrapperLandscape : ''}`}>
+                    <Image
+                      src={cert.image}
+                      alt={cert.title}
+                      fill
+                      sizes="(max-width: 550px) 100vw, (max-width: 800px) 50vw, (max-width: 1100px) 33vw, 25vw"
+                      style={{ objectFit: cert.orientation === 'landscape' ? 'contain' : 'cover' }}
+                    />
+                  </div>
+                ) : (
+                  <div className={styles.imagePlaceholder}>
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
+                      <polyline points="21 15 16 10 5 21"/>
+                    </svg>
+                  </div>
+                )}
                 <div className={styles.cardInfo}>
                   <span className={styles.cardTitle}>{cert.title}</span>
                   <span className={styles.cardSpecialist}>{cert.specialist}</span>
@@ -121,14 +144,26 @@ export default function CertificatesPage() {
                 </svg>
               </button>
               
-              <div className={styles.lightboxImage}>
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
-                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                  <circle cx="8.5" cy="8.5" r="1.5"/>
-                  <polyline points="21 15 16 10 5 21"/>
-                </svg>
-                <span>Сертификат</span>
-              </div>
+              {selectedCertificate.image ? (
+                <div className={`${styles.lightboxImageWrapper} ${selectedCertificate.orientation === 'landscape' ? styles.lightboxImageLandscape : ''}`}>
+                  <Image
+                    src={selectedCertificate.image}
+                    alt={selectedCertificate.title}
+                    fill
+                    sizes="(max-width: 800px) 90vw, 600px"
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+              ) : (
+                <div className={styles.lightboxImage}>
+                  <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <circle cx="8.5" cy="8.5" r="1.5"/>
+                    <polyline points="21 15 16 10 5 21"/>
+                  </svg>
+                  <span>Сертификат</span>
+                </div>
+              )}
               
               <div className={styles.lightboxInfo}>
                 <h3>{selectedCertificate.title}</h3>

@@ -6,6 +6,7 @@ import Appointment from '@/components/sections/Appointment/Appointment'
 
 const YANDEX_MAP_URL = 'https://yandex.ru/maps/org/yana_logowoman_korrektsionny_tsentr/143810668969'
 const YANDEX_REVIEWS_URL = 'https://yandex.ru/maps/org/yana_logowoman_korrektsionny_tsentr/143810668969/reviews/?add-review=true'
+const TWOGIS_REVIEWS_URL = 'https://2gis.ru/krasnodar/inside/3237597887431639/firm/70000001071836790/tab/reviews/addreview'
 
 export default function ContactsPage() {
   return (
@@ -126,7 +127,18 @@ export default function ContactsPage() {
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                   </svg>
-                  Оставить отзыв
+                  Отзыв в Яндекс
+                </a>
+                <a 
+                  href={TWOGIS_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.reviewLink2gis}
+                >
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Отзыв в 2ГИС
                 </a>
               </div>
             </motion.div>

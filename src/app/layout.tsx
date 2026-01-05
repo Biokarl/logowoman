@@ -107,6 +107,8 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <head>
+        <link rel="icon" href="/images/hero/logo.jpg" />
+        <link rel="apple-touch-icon" href="/images/hero/logo.jpg" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
