@@ -16,11 +16,11 @@ type Certificate = {
 // Сертификаты (с изображениями и заглушки)
 const certificates: Certificate[] = [
   // Реальные сертификаты
-  { id: 1, title: 'Диплом о профессиональной переподготовке', specialist: 'Яна Орловская', image: '/images/certificates/Диплом_о_проф_переподготовке_Практическая_нейропсихология.jpg', orientation: 'landscape' },
-  { id: 2, title: 'Сертификат Нейро Москва', specialist: 'Яна Орловская', image: '/images/certificates/СЕРТИФИКАТ-Нейро-Москва.jpg', orientation: 'portrait' },
-  { id: 3, title: 'Удостоверение повышения квалификации', specialist: 'Яна Орловская', image: '/images/certificates/Уд_пов_квалификации_Формирование_пространсвенных_представлений.jpg', orientation: 'landscape' },
-  { id: 4, title: 'Удостоверение повышения квалификации', specialist: 'Яна Орловская', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квал_Мячики_мешочки.jpg', orientation: 'landscape' },
-  { id: 5, title: 'Удостоверение повышения квалификации', specialist: 'Яна Орловская', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квалиф_Методы_Ранней_Нейродиагностики.jpg', orientation: 'landscape' },
+  { id: 1, title: 'Диплом о профессиональной переподготовке', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/Диплом_о_проф_переподготовке_Практическая_нейропсихология.jpg', orientation: 'landscape' },
+  { id: 2, title: 'Сертификат Нейро Москва', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/СЕРТИФИКАТ-Нейро-Москва.jpg', orientation: 'portrait' },
+  { id: 3, title: 'Удостоверение повышения квалификации', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/Уд_пов_квалификации_Формирование_пространсвенных_представлений.jpg', orientation: 'landscape' },
+  { id: 4, title: 'Удостоверение повышения квалификации', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квал_Мячики_мешочки.jpg', orientation: 'landscape' },
+  { id: 5, title: 'Удостоверение повышения квалификации', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квалиф_Методы_Ранней_Нейродиагностики.jpg', orientation: 'landscape' },
   // Заглушки для будущих сертификатов
   { id: 6, title: 'Диплом о высшем образовании', specialist: 'Яна Орловская' },
   { id: 7, title: 'Сертификат повышения квалификации', specialist: 'Яна Орловская' },
