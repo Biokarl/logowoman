@@ -18,27 +18,17 @@ const videos = [
   {
     id: 2,
     title: 'Занятие с логопедом',
-    src: '/videos/video_2025-12-27_15-37-02.mp4',
+    src: '/videos/video_2.mp4',
   },
   {
     id: 3,
     title: 'Результаты работы',
-    src: '/videos/video_2025-12-27_15-50-35.mp4',
+    src: '/videos/video_3.mp4',
   },
   {
     id: 4,
     title: 'Наши методики',
-    src: '/videos/video_2025-12-27_15-50-45.mp4',
-  },
-  {
-    id: 5,
-    title: 'Отзывы родителей',
-    src: '/videos/video_2025-12-27_15-50-51.mp4',
-  },
-  {
-    id: 6,
-    title: 'Фрагмент урока',
-    src: '/videos/video_2025-12-27_15-50-57.mp4',
+    src: '/videos/video_4.mp4',
   },
 ]
 
@@ -171,6 +161,17 @@ export default function Videos() {
             exit={{ opacity: 0 }}
             onClick={closeVideo}
           >
+            <button 
+              className={styles.closeBtn}
+              onClick={closeVideo}
+              aria-label="Закрыть"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <line x1="18" y1="6" x2="6" y2="18"/>
+                <line x1="6" y1="6" x2="18" y2="18"/>
+              </svg>
+            </button>
+
             <motion.div 
               className={styles.modalContent}
               initial={{ opacity: 0, scale: 0.9 }}
@@ -178,17 +179,6 @@ export default function Videos() {
               exit={{ opacity: 0, scale: 0.9 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
-                className={styles.closeBtn}
-                onClick={closeVideo}
-                aria-label="Закрыть"
-              >
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <line x1="18" y1="6" x2="6" y2="18"/>
-                  <line x1="6" y1="6" x2="18" y2="18"/>
-                </svg>
-              </button>
-              
               <video
                 className={styles.modalVideo}
                 src={selectedVideo.src}

@@ -43,13 +43,19 @@
   overflow: visible !important;
 }
 
+.swiper :global(.swiper-slide) {
+  height: auto;
+}
+
 .card {
   position: relative;
   height: 100%;
-  min-height: 200px;
+  min-height: 280px;
   padding: 0;
   padding-left: 140px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .photoWrapper {
@@ -82,28 +88,40 @@
   padding: 16px 20px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  justify-content: center;
+  flex: 1;
+  justify-content: flex-start;
 }
 
 .name {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 4px;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 44px;
 }
 
 .specialty {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--text-active);
   font-weight: 500;
   margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 34px;
+  line-height: 1.3;
 }
 
 .experience {
   font-size: 13px;
   color: var(--text-secondary);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
 
 .actions {
@@ -111,6 +129,7 @@
   align-items: center;
   gap: 12px;
   margin-bottom: 12px;
+  margin-top: auto;
 }
 
 .detailsBtn {

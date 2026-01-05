@@ -8,83 +8,9 @@ import { Navigation } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
 import { motion } from 'framer-motion'
 import styles from './Specialists.module.css'
+import { specialists } from '@/data/specialists'
 
 import 'swiper/css'
-
-const specialists = [
-  {
-    id: 1,
-    name: 'Яна Орловская',
-    specialty: 'Логопед-дефектолог',
-    experience: '12 лет опыта',
-    photo: '/images/hero/Орловская_Яна.jpg',
-    reviewsCount: 156
-  },
-  {
-    id: 2,
-    name: 'Елена Смирнова',
-    specialty: 'Детский психолог',
-    experience: '8 лет опыта',
-    photo: '/images/specialists/Специалист_1.jpg',
-    reviewsCount: 98
-  },
-  {
-    id: 3,
-    name: 'Марина Козлова',
-    specialty: 'Нейропсихолог',
-    experience: '10 лет опыта',
-    photo: '/images/specialists/Специалист_2.jpg',
-    reviewsCount: 124
-  },
-  {
-    id: 4,
-    name: 'Анна Петрова',
-    specialty: 'Логопед',
-    experience: '6 лет опыта',
-    photo: '/images/specialists/Специалист_3.jpg',
-    reviewsCount: 87
-  },
-  {
-    id: 5,
-    name: 'Ольга Иванова',
-    specialty: 'Дефектолог',
-    experience: '9 лет опыта',
-    photo: '/images/specialists/Специалист_4.jpg',
-    reviewsCount: 112
-  },
-  {
-    id: 6,
-    name: 'Наталья Волкова',
-    specialty: 'Логопед',
-    experience: '7 лет опыта',
-    photo: '/images/specialists/Специалист_5.jpg',
-    reviewsCount: 95
-  },
-  {
-    id: 7,
-    name: 'Ирина Соколова',
-    specialty: 'Детский психолог',
-    experience: '5 лет опыта',
-    photo: '/images/specialists/Специалист_6.jpg',
-    reviewsCount: 78
-  },
-  {
-    id: 8,
-    name: 'Татьяна Морозова',
-    specialty: 'Дефектолог',
-    experience: '8 лет опыта',
-    photo: '/images/specialists/Специалист_7.jpg',
-    reviewsCount: 103
-  },
-  {
-    id: 9,
-    name: 'Светлана Белова',
-    specialty: 'Нейропсихолог',
-    experience: '6 лет опыта',
-    photo: '/images/specialists/Специалист_8.jpg',
-    reviewsCount: 89
-  },
-]
 
 export default function Specialists() {
   const swiperRef = useRef<SwiperType | null>(null)
@@ -219,4 +145,3 @@ export default function Specialists() {
     </section>
   )
 }
-
