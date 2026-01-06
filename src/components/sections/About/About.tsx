@@ -1,7 +1,13 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Navigation } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
 import styles from './About.module.css'
+
+import 'swiper/css'
 
 const features = [
   {
@@ -10,8 +16,8 @@ const features = [
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
     ),
-    title: 'Безопасная среда',
-    description: 'Создаём комфортную и безопасную атмосферу для развития каждого ребёнка'
+    title: 'Оснащенные кабинеты',
+    description: 'Наш центр оснащен проверенным на практике    оборудованием  и авторскими пособиями от ведущих специалистов России,  а так же огромным количеством различных развивающих  материалов'
   },
   {
     icon: (
@@ -89,7 +95,28 @@ const itemVariants = {
   }
 }
 
+function FeatureCard({ feature }: { feature: typeof features[0] }) {
+  return (
+    <div className={`card ${styles.card}`}>
+      <div className={styles.iconWrapper}>
+        {feature.icon}
+      </div>
+      <h3 className={styles.cardTitle}>{feature.title}</h3>
+      <p className={styles.cardDesc}>{feature.description}</p>
+    </div>
+  )
+}
+
 export default function About() {
+  const swiperRef = useRef<SwiperType | null>(null)
+  const [isBeginning, setIsBeginning] = useState(true)
+  const [isEnd, setIsEnd] = useState(false)
+
+  const handleSlideChange = (swiper: SwiperType) => {
+    setIsBeginning(swiper.isBeginning)
+    setIsEnd(swiper.isEnd)
+  }
+
   return (
     <section className={`section ${styles.about}`} id="about">
       <div className="container">
@@ -107,6 +134,7 @@ export default function About() {
           </p>
         </motion.div>
 
+        {/* Desktop Grid */}
         <motion.div 
           className={styles.grid}
           variants={containerVariants}
@@ -117,19 +145,56 @@ export default function About() {
           {features.map((feature, index) => (
             <motion.div 
               key={index} 
-              className={`card ${styles.card}`}
               variants={itemVariants}
             >
-              <div className={styles.iconWrapper}>
-                {feature.icon}
-              </div>
-              <h3 className={styles.cardTitle}>{feature.title}</h3>
-              <p className={styles.cardDesc}>{feature.description}</p>
+              <FeatureCard feature={feature} />
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Mobile Swiper */}
+        <div className={styles.mobileSwiper}>
+          <div className={styles.swiperNavigation}>
+            <button 
+              className={`${styles.navBtn} ${isBeginning ? styles.navBtnDisabled : ''}`}
+              onClick={() => swiperRef.current?.slidePrev()}
+              aria-label="Предыдущий"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="15 18 9 12 15 6"/>
+              </svg>
+            </button>
+            <button 
+              className={`${styles.navBtn} ${isEnd ? styles.navBtnDisabled : ''}`}
+              onClick={() => swiperRef.current?.slideNext()}
+              aria-label="Следующий"
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <polyline points="9 18 15 12 9 6"/>
+              </svg>
+            </button>
+          </div>
+          
+          <Swiper
+            modules={[Navigation]}
+            spaceBetween={16}
+            slidesPerView={1.15}
+            centeredSlides={false}
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper
+              handleSlideChange(swiper)
+            }}
+            onSlideChange={handleSlideChange}
+            className={styles.swiper}
+          >
+            {features.map((feature, index) => (
+              <SwiperSlide key={index}>
+                <FeatureCard feature={feature} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </section>
   )
 }
-

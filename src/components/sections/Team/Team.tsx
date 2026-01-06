@@ -5,9 +5,12 @@ import { motion } from 'framer-motion'
 import styles from './Team.module.css'
 
 const teamImages = [
-  { src: '/images/team/team1.jpg', alt: 'Команда Logowoman' },
+  { src: '/images/team/team1.jpg', alt: 'Занятия с детьми' },
   { src: '/images/team/team2.jpg', alt: 'Рабочий процесс' },
-  { src: '/images/team/team3.jpg', alt: 'Занятия с детьми' },
+  { src: '/images/team/team3.jpg', alt: 'Индивидуальные занятия' },
+  { src: '/images/team/team4.jpg', alt: 'Работа специалистов' },
+  { src: '/images/team/team5.jpg', alt: 'Развитие речи' },
+  { src: '/images/team/team6.jpg', alt: 'Коррекционная работа' },
 ]
 
 export default function Team() {
@@ -22,10 +25,7 @@ export default function Team() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className={styles.title}>Наша команда</h2>
-            <p className={styles.description}>
-              Постоянно повышает квалификацию и применяют передовые методики в своей работе,  исходя из законов развития психики , речи и мышления .
-            </p>
+            <h2 className={styles.title}>Чем мы можем помочь?</h2>
             <p className={styles.description}>
               Мы можем помочь  детям без речи , без понимания речи , с трудностями в обучении , поведении и коммуникации . 
               Справимся со скудным словарным запасом ,   отсутствием фразовой и вопросительной речи .
@@ -73,33 +73,37 @@ export default function Team() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className={styles.imageGrid}>
+              {/* Главное большое фото */}
               <div className={styles.imageLarge}>
-                <div className={styles.imagePlaceholder}>
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                  <span>Фото команды</span>
-                </div>
+                <Image 
+                  src={teamImages[0].src}
+                  alt={teamImages[0].alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 50vw"
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
-              <div className={styles.imageSmall}>
-                <div className={styles.imagePlaceholder}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                </div>
-              </div>
-              <div className={styles.imageSmall}>
-                <div className={styles.imagePlaceholder}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                </div>
+              
+              {/* Маленькие фото в сетке */}
+              <div className={styles.smallGrid}>
+                {teamImages.slice(1, 5).map((img, index) => (
+                  <motion.div 
+                    key={img.src}
+                    className={styles.imageSmall}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                  >
+                    <Image 
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 600px) 50vw, (max-width: 900px) 25vw, 15vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </motion.div>
+                ))}
               </div>
             </div>
           </motion.div>
@@ -108,4 +112,3 @@ export default function Team() {
     </section>
   )
 }
-

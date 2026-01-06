@@ -1,11 +1,18 @@
 .about {
   background: transparent;
+  overflow: hidden;
 }
 
+/* Desktop Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+
+/* Mobile Swiper - hidden on desktop */
+.mobileSwiper {
+  display: none;
 }
 
 .card {
@@ -14,6 +21,7 @@
   flex-direction: column;
   gap: 16px;
   text-align: left;
+  height: 100%;
 }
 
 .iconWrapper {
@@ -39,19 +47,64 @@
   line-height: 1.6;
 }
 
+/* Swiper styles */
+.swiperNavigation {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.navBtn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.navBtn:hover:not(.navBtnDisabled) {
+  background: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+.navBtnDisabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.swiper {
+  overflow: visible !important;
+}
+
+.swiper :global(.swiper-slide) {
+  height: auto;
+}
+
 @media (max-width: 1000px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+  /* Hide grid on mobile */
   .grid {
-    grid-template-columns: 1fr;
+    display: none;
+  }
+  
+  /* Show swiper on mobile */
+  .mobileSwiper {
+    display: block;
   }
   
   .card {
     padding: 24px;
+    min-height: 220px;
   }
 }
-
