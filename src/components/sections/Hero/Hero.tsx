@@ -60,8 +60,8 @@ export default function Hero() {
           </div>
           <div className={styles.imageContainer}>
             <Image
-              src="/images/hero/Орловская_Яна.jpg"
-              alt="Яна Орловская - основатель центра Logowoman"
+              src="/images/hero/Команда.JPG"
+              alt="Команда центра Logowoman"
               fill
               priority
               className={styles.image}
@@ -69,8 +69,8 @@ export default function Hero() {
             />
           </div>
           <div className={styles.imageInfo}>
-            <span className={styles.infoName}>Яна Орловская</span>
-            <span className={styles.infoRole}>Основатель центра, логопед-дефектолог</span>
+            <span className={styles.infoName}>Наша команда</span>
+            <span className={styles.infoRole}>Профессионалы с опытом более 10 лет</span>
           </div>
         </motion.div>
       </div>
