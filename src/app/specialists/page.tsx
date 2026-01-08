@@ -91,13 +91,6 @@ function SpecialistsContent() {
                   <p className={styles.specialty}>{specialist.specialty}</p>
                   <p className={styles.experience}>{specialist.experience}</p>
                   
-                  <div className={styles.reviews}>
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--text-active)">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    <span>{specialist.reviewsCount} отзывов</span>
-                  </div>
-                  
                   <button className={styles.detailsBtn}>
                     Подробнее
                   </button>
@@ -197,23 +190,14 @@ function SpecialistsContent() {
                   </div>
 
                   <div className={styles.modalSection}>
-                    <h4>Отзывы</h4>
-                    <div className={styles.reviewsInfo}>
-                      <div className={styles.reviewsCount}>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--text-active)">
-                          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <span>{selectedSpecialist.reviewsCount} отзывов</span>
-                      </div>
-                      <a 
-                        href={YANDEX_REVIEWS_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.leaveReviewBtn}
-                      >
-                        Оставить отзыв
-                      </a>
-                    </div>
+                    <a 
+                      href={YANDEX_REVIEWS_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.leaveReviewBtn}
+                    >
+                      Оставить отзыв
+                    </a>
                   </div>
                 </div>
               </div>

@@ -5,10 +5,10 @@ import { motion } from 'framer-motion'
 import styles from './Team.module.css'
 
 const teamImages = [
-  { src: '/images/team/team1.jpg', alt: 'Занятия с детьми' },
-  { src: '/images/team/team2.jpg', alt: 'Рабочий процесс' },
+  { src: '/images/team/team7.jpg', alt: 'Занятия с детьми' },
+  { src: '/images/team/team8.jpg', alt: 'Рабочий процесс' },
   { src: '/images/team/team3.jpg', alt: 'Индивидуальные занятия' },
-  { src: '/images/team/team4.jpg', alt: 'Работа специалистов' },
+  { src: '/images/team/team11.jpg', alt: 'Работа специалистов' },
   { src: '/images/team/team5.jpg', alt: 'Развитие речи' },
   { src: '/images/team/team6.jpg', alt: 'Коррекционная работа' },
 ]

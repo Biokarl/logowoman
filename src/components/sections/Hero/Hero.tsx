@@ -17,11 +17,13 @@ export default function Hero() {
         >
           <span className={styles.badge}>Центр психо-речевой коррекции</span>
           <h1 className={styles.title}>
-            Помогаем детям <span className={styles.highlight}>говорить</span> и развиваться
+            {/* Место, где   <span className={styles.highlight}>результат</span> говорит за нас.  */}
+            Комплексная <span className={styles.highlight}>помощь</span> детям с задержкой в развитии
           </h1>
           <p className={styles.description}>
-          Профессиональная команда коррекционных специалистов .
-          Индивидуальные программы абилитации и развития , постоянный мониторинг динамики. Все специалисты постоянно повышают свои компетенции  и владеют самыми современными коррекционными методиками.  Мы нацелены на результат.
+          Место, где результат говорит за нас.
+          Профессиональная команда коррекционных специалистов.
+          Индивидуальные программы абилитации и развития , постоянный мониторинг динамики. Все специалисты постоянно повышают свои компетенции  и владеют самыми современными коррекционными методиками.
           </p>
           <div className={styles.buttons}>
             <Link href="/#appointment" className="btn btn-primary">
@@ -42,7 +44,7 @@ export default function Hero() {
               <span className={styles.statLabel}>счастливых семей</span>
             </div>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>9</span>
+              <span className={styles.statNumber}>11</span>
               <span className={styles.statLabel}>специалистов</span>
             </div>
           </div>
@@ -69,7 +71,7 @@ export default function Hero() {
             />
           </div>
           <div className={styles.imageInfo}>
-            <span className={styles.infoName}>Наша команда</span>
+            <span className={styles.infoName}>Комплексная помощь в развитии</span>
             <span className={styles.infoRole}>Профессионалы с опытом более 10 лет</span>
           </div>
         </motion.div>
