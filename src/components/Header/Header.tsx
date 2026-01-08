@@ -4,29 +4,13 @@ import { useState, useRef, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './Header.module.css'
+import { services as servicesData } from '@/data/services'
 
-const services = [
-  {
-    title: 'Логопед',
-    description: 'Диагностика и коррекция речевых нарушений',
-    href: '/services#logoped'
-  },
-  {
-    title: 'Дефектолог',
-    description: 'Работа с задержкой психического развития',
-    href: '/services#defectolog'
-  },
-  {
-    title: 'Психолог',
-    description: 'Психологическая поддержка и консультации',
-    href: '/services#psycholog'
-  },
-  {
-    title: 'Нейропсихолог',
-    description: 'Нейропсихологическая диагностика и коррекция',
-    href: '/services#neuropsycholog'
-  },
-]
+const services = servicesData.map(service => ({
+  title: service.title,
+  description: service.description.slice(0, 50) + '...',
+  href: `/services#${service.id}`
+}))
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

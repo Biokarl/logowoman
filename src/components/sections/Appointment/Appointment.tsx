@@ -105,7 +105,7 @@ export default function Appointment() {
                   <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
                   <polyline points="22 4 12 14.01 9 11.01"/>
                 </svg>
-                <span>Бесплатная первичная консультация</span>
+                <span>Определение коррекционного маршрута на первичной консультации</span>
               </div>
               <div className={styles.benefit}>
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-active)" strokeWidth="2">
@@ -171,7 +171,7 @@ export default function Appointment() {
                 </div>
 
                 <div className={styles.formGroup}>
-                  <label htmlFor="message" className={styles.label}>О ребёнке (необязательно)</label>
+                  <label htmlFor="message" className={styles.label}>О ребёнке</label>
                   <textarea
                     id="message"
                     name="message"
