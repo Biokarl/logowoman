@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from './Footer.module.css'
+import { services } from '@/data/services'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -40,10 +41,9 @@ export default function Footer() {
             <div className={styles.navColumn}>
               <h4 className={styles.navTitle}>Услуги</h4>
               <nav className={styles.navLinks}>
-                <Link href="/services#logoped">Логопед</Link>
-                <Link href="/services#defectolog">Дефектолог</Link>
-                <Link href="/services#psycholog">Психолог</Link>
-                <Link href="/services#neuropsycholog">Нейропсихолог</Link>
+                {services.map(service => (
+                  <Link key={service.id} href={`/services#${service.id}`}>{service.title}</Link>
+                ))}
               </nav>
             </div>
 

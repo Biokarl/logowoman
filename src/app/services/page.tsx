@@ -114,14 +114,14 @@ export default function ServicesPage() {
                   </div>
                   
                   <div className={styles.cardImage}>
-                    <div className={styles.imagePlaceholder}>
-                      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                        <circle cx="8.5" cy="8.5" r="1.5"/>
-                        <polyline points="21 15 16 10 5 21"/>
-                      </svg>
-                      <span className={styles.imagePlaceholderText}>Фото с занятий</span>
-                    </div>
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      sizes="(max-width: 1000px) 100vw, 400px"
+                      priority={index === 0}
+                      style={{ objectFit: 'cover' }}
+                    />
                   </div>
                 </motion.div>
               )
