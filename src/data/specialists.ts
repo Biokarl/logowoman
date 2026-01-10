@@ -55,8 +55,17 @@ export const specialists: Specialist[] = [
       'Развитие пространственных и временных навыков',
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат повышения квалификации', image: '', orientation: 'landscape' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Лазарева_Инна_Владимировна/Диплом.jpg', orientation: 'landscape' },
+      { id: 2, title: 'Зрительно-пространственное восприятие', image: '/images/certificates/Лазарева_Инна_Владимировна/Зрительно-пространственное_восприятие.jpg', orientation: 'landscape' },
+      { id: 3, title: 'Нейропсихологическая коррекция ВПФ детей школьного и дошкольного возраста', image: '/images/certificates/Лазарева_Инна_Владимировна/Нейропсихологическая_коррекция_ВПФ_детей_школьного_и_дошкольного_возраста.jpg', orientation: 'landscape' },
+      { id: 4, title: 'Онтогенез здорового психомоторного развития', image: '/images/certificates/Лазарева_Инна_Владимировна/Онтогенез_здорового_психомоторного_развития.jpg', orientation: 'landscape' },
+      { id: 5, title: 'Практика запуска речи', image: '/images/certificates/Лазарева_Инна_Владимировна/Практика_запуска_речи.jpg', orientation: 'landscape' },
+      { id: 6, title: 'Применение техник прикладной кинезиологии и остеопатии в логопедии', image: '/images/certificates/Лазарева_Инна_Владимировна/Применение_техник_прикладной_кинезиологии_и_остеопатии_в_логопедии.jpg', orientation: 'landscape' },
+      { id: 7, title: 'Сертификат', image: '/images/certificates/Лазарева_Инна_Владимировна/Сертификат.jpg', orientation: 'landscape' },
+      { id: 8, title: 'Сертификат 2', image: '/images/certificates/Лазарева_Инна_Владимировна/Сертификат2.jpg', orientation: 'landscape' },
+      { id: 9, title: 'Удостоверение', image: '/images/certificates/Лазарева_Инна_Владимировна/Удостоверение.jpg', orientation: 'landscape' },
+      { id: 10, title: 'Характеристика и диагностика примитивных рефлексов', image: '/images/certificates/Лазарева_Инна_Владимировна/Характеристика_и_диагностика_примитивных_рефлексов.jpg', orientation: 'landscape' },
+      { id: 11, title: 'ЭЭГ в работе смежного специалиста', image: '/images/certificates/Лазарева_Инна_Владимировна/ЭЭГ_в_работе_смежного_специалиста.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -75,8 +84,23 @@ export const specialists: Specialist[] = [
       'Формирование навыков мышления'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Удостоверение повышения квалификации', image: '', orientation: 'landscape' },
+      { id: 1, title: 'Диагностика безречевого ребенка', image: '/images/certificates/Трухина_Олеся_Васильевна/Диагностика_безречевого_ребенка.jpg', orientation: 'landscape' },
+      { id: 2, title: 'Жизнь моя', image: '/images/certificates/Трухина_Олеся_Васильевна/Жизнь_моя.jpg', orientation: 'landscape' },
+      { id: 3, title: 'Интелектуальные нарушения', image: '/images/certificates/Трухина_Олеся_Васильевна/Интелектуальные_нарушения.jpg', orientation: 'landscape' },
+      { id: 4, title: 'Интенсивная игра с ребенком с РАС', image: '/images/certificates/Трухина_Олеся_Васильевна/Интенсивная_игра_с_ребенком_с_РАС.jpg', orientation: 'landscape' },
+      { id: 5, title: 'Коммуникация и развитие речи детей раннего возраста', image: '/images/certificates/Трухина_Олеся_Васильевна/Коммуникация_и_развитие_речи_детей_раннего_возраста.jpg', orientation: 'landscape' },
+      { id: 6, title: 'Коррекция расстройства экспрессивной речи', image: '/images/certificates/Трухина_Олеся_Васильевна/Коррекция_расстройства_экспрессивной_речи.jpg', orientation: 'landscape' },
+      { id: 7, title: 'Мануальные техники активации речи', image: '/images/certificates/Трухина_Олеся_Васильевна/Мануальные_техники_активации_речи.jpg', orientation: 'landscape' },
+      { id: 8, title: 'Особенности речи по отстройке и запуску речи у детей с РАС', image: '/images/certificates/Трухина_Олеся_Васильевна/Особенности_речи_по_отстройке_и_запуску_речи_у_детей_с_РАС.jpg', orientation: 'landscape' },
+      { id: 9, title: 'Первичный прием логопеда', image: '/images/certificates/Трухина_Олеся_Васильевна/Первичный_прием_логопеда.jpg', orientation: 'landscape' },
+      { id: 10, title: 'Прикладной анализ поведения', image: '/images/certificates/Трухина_Олеся_Васильевна/Прикладной_анализ_поведения.jpg', orientation: 'landscape' },
+      { id: 11, title: 'Расстройство нейроразвития эмоций и поведения у детей', image: '/images/certificates/Трухина_Олеся_Васильевна/Расстройство_нейроразвития_эмоций_и_поведения_у_детей.jpg', orientation: 'landscape' },
+      { id: 12, title: 'Ритмико фонематический тренинг', image: '/images/certificates/Трухина_Олеся_Васильевна/Ритмико_фонематический_тренинг.jpg', orientation: 'landscape' },
+      { id: 13, title: 'Свидетельство', image: '/images/certificates/Трухина_Олеся_Васильевна/Свидетельство.jpg', orientation: 'landscape' },
+      { id: 14, title: 'Система работы по отстройке и запуску речи', image: '/images/certificates/Трухина_Олеся_Васильевна/Система_работы_по_отстройке_и_запуску_речи.jpg', orientation: 'landscape' },
+      { id: 15, title: 'Формирование базовых грамматических представлений', image: '/images/certificates/Трухина_Олеся_Васильевна/Формирование_базовых_грамматических_представлений.jpg', orientation: 'landscape' },
+      { id: 16, title: 'Формирование предречевых навыков', image: '/images/certificates/Трухина_Олеся_Васильевна/Формирование_предречевых_навыков.jpg', orientation: 'landscape' },
+      { id: 17, title: 'Функциональный логопедический массаж глотание жевание', image: '/images/certificates/Трухина_Олеся_Васильевна/Функциональный_логопедический_массаж_глотание_жевание.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -95,8 +119,7 @@ export const specialists: Specialist[] = [
       'Формирование навыков мышления'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат повышения квалификации', image: '', orientation: 'portrait' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Адилова_Диана_Уруджевна/Диплом.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -143,8 +166,16 @@ export const specialists: Specialist[] = [
       'Коррекция дислексии, дисграфии'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат повышения квалификации', image: '', orientation: 'landscape' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Диплом.jpg', orientation: 'landscape' },
+      { id: 2, title: 'Грубые нарушения речи у детей', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Грубые_нарушения_речи_у_детей.jpg', orientation: 'landscape' },
+      { id: 3, title: 'Клиникоориентированный подход в логопедической практике', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Клиникоориентированный_подход_в_логопедической_практике.jpg', orientation: 'landscape' },
+      { id: 4, title: 'Логопедический массаж', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Логопедический_массаж.jpg', orientation: 'landscape' },
+      { id: 5, title: 'Логопедическое обследование устной речи у детей', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Логопедическое_обследование_устной_речи_у_детей.jpg', orientation: 'landscape' },
+      { id: 6, title: 'Мануальные техники активации речи', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Мануальные_техники_активации_речи.jpg', orientation: 'landscape' },
+      { id: 7, title: 'Миофункциональная коррекция в практике специалистов', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Миофункциональная_коррекция_в_практике_специалистов.jpg', orientation: 'landscape' },
+      { id: 8, title: 'Миофункциональная коррекция орофациальных дисфункций у детей с нарушением речи и прикуса', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Миофункциональная_коррекция_орофациальных_дисфункций_у_детей_с_нарушением_речи_и_прикуса.jpg', orientation: 'landscape' },
+      { id: 9, title: 'Нейропсихологический анализ письменных работ у детей с трудностями обучения', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Нейропсихологический_анализ_письменных_работ_у_детей_с_трудностями_обучения.jpg', orientation: 'landscape' },
+      { id: 10, title: 'Точечный массаж в логопеддической практике', image: '/images/certificates/Эсауленко_Анастасия_Андреевна/Точечный_массаж_в_логопеддической_практике.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -166,8 +197,15 @@ export const specialists: Specialist[] = [
       'Коррекция дислексии, дисграфии'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат повышения квалификации', image: '', orientation: 'portrait' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Зверева_Лада_Игоревна/Диплом.jpg', orientation: 'landscape' },
+      { id: 2, title: 'Диплом 2', image: '/images/certificates/Зверева_Лада_Игоревна/Диплом2.jpg', orientation: 'landscape' },
+      { id: 3, title: 'Диагностика причин не правильного произношения звука', image: '/images/certificates/Зверева_Лада_Игоревна/Диагностика_причин_не_правильного_произношения_звука.jpg', orientation: 'landscape' },
+      { id: 4, title: 'Клиникоориентировачный подход в логопедической практике', image: '/images/certificates/Зверева_Лада_Игоревна/Клиникоориентировачный_подход_в_логопедической_практике.jpg', orientation: 'landscape' },
+      { id: 5, title: 'Логопедический и зондовый массаж', image: '/images/certificates/Зверева_Лада_Игоревна/Логопедический_и_зондовый_массаж.jpg', orientation: 'landscape' },
+      { id: 6, title: 'Музыкальные техники активации речи', image: '/images/certificates/Зверева_Лада_Игоревна/Музыкальные_техники_активации_речи.jpg', orientation: 'landscape' },
+      { id: 7, title: 'Нейропсихологический анализ письменных работ у детей с трудностями обучения', image: '/images/certificates/Зверева_Лада_Игоревна/Нейропсихологический_анализ_письменных_работ_у_детей_с_трудностями_обучения.jpg', orientation: 'landscape' },
+      { id: 8, title: 'Семинар-практикум', image: '/images/certificates/Зверева_Лада_Игоревна/Семинар-практикум.jpg', orientation: 'landscape' },
+      { id: 9, title: 'Формирование базовых грамматических представлений', image: '/images/certificates/Зверева_Лада_Игоревна/Формирование_базовых_грамматических_представлений.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -188,8 +226,7 @@ export const specialists: Specialist[] = [
       'Адаптация к детскому саду и школе',
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат повышения квалификации', image: '', orientation: 'landscape' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Красникова_Анастасия_Александровна/Диплом.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -243,8 +280,7 @@ export const specialists: Specialist[] = [
       'Восстановление функций организма. Это комплексный метод, включающий упражнения, массаж и другие методы, направленные на стимуляцию внутренних резервов организма и улучшение функционирования организма. Чаще для детей с проблемами опорно-двигательного аппарата.'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Магистерский диплом', image: '', orientation: 'landscape' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Ерохин_Михаил_Михайлович/Диплом.jpg', orientation: 'landscape' },
     ],
   },
   {
@@ -265,9 +301,21 @@ export const specialists: Specialist[] = [
       'Социальные навыки'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о высшем образовании', image: '', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат BCBA3', image: '', orientation: 'portrait' },
-      { id: 3, title: 'Сертификат ABA-тераписта', image: '', orientation: 'landscape' },
+      { id: 1, title: 'Диплом', image: '/images/certificates/Асадова_Эльмира_Игоревна/Диплом.jpg', orientation: 'landscape' },
+      { id: 2, title: 'ABA-инструктор', image: '/images/certificates/Асадова_Эльмира_Игоревна/ABA-инструктор.jpg', orientation: 'portrait' },
+      { id: 3, title: 'Базисные принципы и методы прикладного анализа поведения (ABA)', image: '/images/certificates/Асадова_Эльмира_Игоревна/Базисные_принципы_и_методы_прикладного_анализа_поведения_(ABA).jpg', orientation: 'landscape' },
+      { id: 4, title: 'Диплом о повышении квалификации', image: '/images/certificates/Асадова_Эльмира_Игоревна/Диплом_о_повышении_квалификации.jpg', orientation: 'landscape' },
+      { id: 5, title: 'Диплом о повышении квалификации 2', image: '/images/certificates/Асадова_Эльмира_Игоревна/Диплом_о_повышении_квалификации2.jpg', orientation: 'landscape' },
+      { id: 6, title: 'Диплом о проф переподготовке', image: '/images/certificates/Асадова_Эльмира_Игоревна/Диплом_о_проф_переподготовке.jpg', orientation: 'landscape' },
+      { id: 7, title: 'Практический функциональный анализ и тренинг с опорой на навыки', image: '/images/certificates/Асадова_Эльмира_Игоревна/Практический_функциональный_анализ_и_тренинг_с_опорой_на_навыки.jpg', orientation: 'landscape' },
+      { id: 8, title: 'Прикладной анализ поведения', image: '/images/certificates/Асадова_Эльмира_Игоревна/Прикладной_анализ_поведения.jpg', orientation: 'landscape' },
+      { id: 9, title: 'Прикладной анализ поведения 2', image: '/images/certificates/Асадова_Эльмира_Игоревна/Прикладной_анализ_поведения2.jpg', orientation: 'landscape' },
+      { id: 10, title: 'Расширение обобщение и поддержание эффективности лечения на основе навыков', image: '/images/certificates/Асадова_Эльмира_Игоревна/Расширение_обобщение_и_поддержание_эффективности_лечения_на_основе_навыков.jpg', orientation: 'landscape' },
+      { id: 11, title: 'Сенсорно-интегративный подход в формировании социально-коммуникативных навыков у детей', image: '/images/certificates/Асадова_Эльмира_Игоревна/Сенсорно-интегративный_подход_в_формировании_социально-коммуникативных_навыков_у_детей.jpg', orientation: 'landscape' },
+      { id: 12, title: 'Советы для ускорения ТОН', image: '/images/certificates/Асадова_Эльмира_Игоревна/Советы_для_ускорения_ТОН.jpg', orientation: 'landscape' },
+      { id: 13, title: 'Стандарты практики и супервизии в сфере ABA', image: '/images/certificates/Асадова_Эльмира_Игоревна/Стандарты_практики_и_супервизии_в_сфере_ABA.jpg', orientation: 'landscape' },
+      { id: 14, title: 'Удостоверение о повышении квалификации', image: '/images/certificates/Асадова_Эльмира_Игоревна/Удостоверение_о_повышении_квалификации.jpg', orientation: 'landscape' },
+      { id: 15, title: 'Формирование и дифференцированное подкрепление', image: '/images/certificates/Асадова_Эльмира_Игоревна/Формирование_и_дифференцированное_подкрепление.jpg', orientation: 'landscape' },
     ],
   },
   {
