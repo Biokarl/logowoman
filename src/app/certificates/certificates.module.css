@@ -26,6 +26,47 @@
   padding-top: 0;
 }
 
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 32px;
+  justify-content: center;
+}
+
+.filterBtn {
+  padding: 10px 20px;
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 24px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.filterBtn:hover {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+.filterBtnActive {
+  background: var(--accent-primary);
+  color: var(--text-primary);
+  border-color: var(--text-active);
+}
+
+.empty {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.empty p {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -297,6 +338,15 @@
 @media (max-width: 500px) {
   .title {
     font-size: 32px;
+  }
+
+  .filters {
+    gap: 8px;
+  }
+
+  .filterBtn {
+    padding: 8px 16px;
+    font-size: 13px;
   }
 
   .grid {

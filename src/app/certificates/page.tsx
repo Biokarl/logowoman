@@ -1,38 +1,67 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './certificates.module.css'
+import { specialists, Certificate } from '@/data/specialists'
 
-type Certificate = {
-  id: number
-  title: string
-  specialist: string
-  image?: string
-  orientation?: 'portrait' | 'landscape'
+type CertificateWithSpecialist = Certificate & {
+  specialistId: number
+  specialistName: string
 }
 
-// Сертификаты (с изображениями и заглушки)
-const certificates: Certificate[] = [
-  // Реальные сертификаты
-  { id: 1, title: 'Диплом о профессиональной переподготовке', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/Диплом_о_проф_переподготовке_Практическая_нейропсихология.jpg', orientation: 'landscape' },
-  { id: 2, title: 'Сертификат Нейро Москва', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/СЕРТИФИКАТ-Нейро-Москва.jpg', orientation: 'portrait' },
-  { id: 3, title: 'Удостоверение повышения квалификации', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/Уд_пов_квалификации_Формирование_пространсвенных_представлений.jpg', orientation: 'landscape' },
-  { id: 4, title: 'Удостоверение повышения квалификации', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квал_Мячики_мешочки.jpg', orientation: 'landscape' },
-  { id: 5, title: 'Удостоверение повышения квалификации', specialist: 'Гантимирова Наталия Юрьевна', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квалиф_Методы_Ранней_Нейродиагностики.jpg', orientation: 'landscape' },
-  // Заглушки для будущих сертификатов
-  { id: 6, title: 'Диплом о высшем образовании', specialist: 'Яна Орловская' },
-  { id: 7, title: 'Сертификат повышения квалификации', specialist: 'Яна Орловская' },
-  { id: 8, title: 'Диплом логопеда-дефектолога', specialist: 'Яна Орловская' },
-  { id: 9, title: 'Сертификат по нейропсихологии', specialist: 'Марина Козлова' },
-  { id: 10, title: 'Диплом детского психолога', specialist: 'Елена Смирнова' },
-  { id: 11, title: 'Сертификат по игровой терапии', specialist: 'Елена Смирнова' },
-  { id: 12, title: 'Диплом дефектолога', specialist: 'Ольга Иванова' },
-]
+// Собираем все сертификаты из специалистов
+function getAllCertificates(): CertificateWithSpecialist[] {
+  const allCerts: CertificateWithSpecialist[] = []
+  
+  specialists.forEach(specialist => {
+    if (specialist.certificates) {
+      specialist.certificates.forEach(cert => {
+        allCerts.push({
+          ...cert,
+          specialistId: specialist.id,
+          specialistName: specialist.name
+        })
+      })
+    }
+  })
+  
+  return allCerts
+}
 
-export default function CertificatesPage() {
-  const [selectedCertificate, setSelectedCertificate] = useState<Certificate | null>(null)
+// Получаем список специалистов с сертификатами
+function getSpecialistsWithCertificates() {
+  return specialists.filter(s => s.certificates && s.certificates.length > 0)
+}
+
+function CertificatesContent() {
+  const searchParams = useSearchParams()
+  const specialistId = searchParams.get('specialist')
+  
+  const [selectedCertificate, setSelectedCertificate] = useState<CertificateWithSpecialist | null>(null)
+  const [activeFilter, setActiveFilter] = useState<number | null>(
+    specialistId ? parseInt(specialistId) : null
+  )
+
+  const allCertificates = getAllCertificates()
+  const specialistsWithCerts = getSpecialistsWithCertificates()
+  
+  const filteredCertificates = activeFilter 
+    ? allCertificates.filter(c => c.specialistId === activeFilter)
+    : allCertificates
+
+  const activeSpecialist = activeFilter 
+    ? specialists.find(s => s.id === activeFilter)
+    : null
+
+  // Обновляем фильтр при изменении URL
+  useEffect(() => {
+    if (specialistId) {
+      setActiveFilter(parseInt(specialistId))
+    }
+  }, [specialistId])
 
   // Блокировка скролла при открытии модального окна
   useEffect(() => {
@@ -59,7 +88,7 @@ export default function CertificatesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Сертификаты
+            {activeSpecialist ? `Сертификаты: ${activeSpecialist.name}` : 'Сертификаты'}
           </motion.h1>
           <motion.p 
             className={styles.subtitle}
@@ -67,60 +96,100 @@ export default function CertificatesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Дипломы и сертификаты наших специалистов
+            {activeSpecialist 
+              ? `${activeSpecialist.specialty}`
+              : 'Дипломы и сертификаты наших специалистов'
+            }
           </motion.p>
         </div>
       </section>
 
       <section className={`section ${styles.certificates}`}>
         <div className="container">
-          <motion.div 
-            className={styles.grid}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            {certificates.map((cert, index) => (
-              <motion.div
-                key={cert.id}
-                className={styles.card}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.05 * index }}
-                onClick={() => setSelectedCertificate(cert)}
+          {/* Фильтры */}
+          {specialistsWithCerts.length > 0 && (
+            <motion.div 
+              className={styles.filters}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
+              <button
+                className={`${styles.filterBtn} ${!activeFilter ? styles.filterBtnActive : ''}`}
+                onClick={() => setActiveFilter(null)}
               >
-                {cert.image ? (
-                  <div className={`${styles.imageWrapper} ${cert.orientation === 'landscape' ? styles.imageWrapperLandscape : ''}`}>
-                    <Image
-                      src={cert.image}
-                      alt={cert.title}
-                      fill
-                      sizes="(max-width: 550px) 100vw, (max-width: 800px) 50vw, (max-width: 1100px) 33vw, 25vw"
-                      style={{ objectFit: cert.orientation === 'landscape' ? 'contain' : 'cover' }}
-                    />
+                Все
+              </button>
+              {specialistsWithCerts.map(specialist => (
+                <button
+                  key={specialist.id}
+                  className={`${styles.filterBtn} ${activeFilter === specialist.id ? styles.filterBtnActive : ''}`}
+                  onClick={() => setActiveFilter(specialist.id)}
+                >
+                  {specialist.name.split(' ')[0]} {specialist.name.split(' ')[1]}
+                </button>
+              ))}
+            </motion.div>
+          )}
+
+          {filteredCertificates.length === 0 ? (
+            <motion.div 
+              className={styles.empty}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+            >
+              <p>Сертификаты скоро будут добавлены</p>
+            </motion.div>
+          ) : (
+            <motion.div 
+              className={styles.grid}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {filteredCertificates.map((cert, index) => (
+                <motion.div
+                  key={`${cert.specialistId}-${cert.id}`}
+                  className={styles.card}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.05 * index }}
+                  onClick={() => cert.image && setSelectedCertificate(cert)}
+                  style={{ cursor: cert.image ? 'pointer' : 'default' }}
+                >
+                  {cert.image ? (
+                    <div className={`${styles.imageWrapper} ${cert.orientation === 'landscape' ? styles.imageWrapperLandscape : ''}`}>
+                      <Image
+                        src={cert.image}
+                        alt={cert.title}
+                        fill
+                        sizes="(max-width: 550px) 100vw, (max-width: 800px) 50vw, (max-width: 1100px) 33vw, 25vw"
+                        style={{ objectFit: cert.orientation === 'landscape' ? 'contain' : 'cover' }}
+                      />
+                    </div>
+                  ) : (
+                    <div className={styles.imagePlaceholder}>
+                      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                        <polyline points="21 15 16 10 5 21"/>
+                      </svg>
+                    </div>
+                  )}
+                  <div className={styles.cardInfo}>
+                    <span className={styles.cardTitle}>{cert.title}</span>
+                    <span className={styles.cardSpecialist}>{cert.specialistName}</span>
                   </div>
-                ) : (
-                  <div className={styles.imagePlaceholder}>
-                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                      <circle cx="8.5" cy="8.5" r="1.5"/>
-                      <polyline points="21 15 16 10 5 21"/>
-                    </svg>
-                  </div>
-                )}
-                <div className={styles.cardInfo}>
-                  <span className={styles.cardTitle}>{cert.title}</span>
-                  <span className={styles.cardSpecialist}>{cert.specialist}</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
         </div>
       </section>
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedCertificate && (
+        {selectedCertificate && selectedCertificate.image && (
           <motion.div 
             className={styles.lightbox}
             initial={{ opacity: 0 }}
@@ -144,30 +213,19 @@ export default function CertificatesPage() {
                 </svg>
               </button>
               
-              {selectedCertificate.image ? (
-                <div className={`${styles.lightboxImageWrapper} ${selectedCertificate.orientation === 'landscape' ? styles.lightboxImageLandscape : ''}`}>
-                  <Image
-                    src={selectedCertificate.image}
-                    alt={selectedCertificate.title}
-                    fill
-                    sizes="(max-width: 800px) 90vw, 600px"
-                    style={{ objectFit: 'contain' }}
-                  />
-                </div>
-              ) : (
-                <div className={styles.lightboxImage}>
-                  <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="0.5">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-                    <circle cx="8.5" cy="8.5" r="1.5"/>
-                    <polyline points="21 15 16 10 5 21"/>
-                  </svg>
-                  <span>Сертификат</span>
-                </div>
-              )}
+              <div className={`${styles.lightboxImageWrapper} ${selectedCertificate.orientation === 'landscape' ? styles.lightboxImageLandscape : ''}`}>
+                <Image
+                  src={selectedCertificate.image}
+                  alt={selectedCertificate.title}
+                  fill
+                  sizes="(max-width: 800px) 90vw, 600px"
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
               
               <div className={styles.lightboxInfo}>
                 <h3>{selectedCertificate.title}</h3>
-                <p>{selectedCertificate.specialist}</p>
+                <p>{selectedCertificate.specialistName}</p>
               </div>
             </motion.div>
           </motion.div>
@@ -177,3 +235,10 @@ export default function CertificatesPage() {
   )
 }
 
+export default function CertificatesPage() {
+  return (
+    <Suspense fallback={<div className={styles.page}><div className="container">Загрузка...</div></div>}>
+      <CertificatesContent />
+    </Suspense>
+  )
+}
