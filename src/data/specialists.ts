@@ -140,11 +140,11 @@ export const specialists: Specialist[] = [
       'Абилитация дыхания, брифкуратор'
     ],
     certificates: [
-      { id: 1, title: 'Диплом о профессиональной переподготовке', image: '/images/certificates/Диплом_о_проф_переподготовке_Практическая_нейропсихология.jpg', orientation: 'landscape' },
-      { id: 2, title: 'Сертификат Нейро Москва', image: '/images/certificates/СЕРТИФИКАТ-Нейро-Москва.jpg', orientation: 'portrait' },
-      { id: 3, title: 'Удостоверение: Формирование пространственных представлений', image: '/images/certificates/Уд_пов_квалификации_Формирование_пространсвенных_представлений.jpg', orientation: 'landscape' },
-      { id: 4, title: 'Удостоверение: Мячики, мешочки', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квал_Мячики_мешочки.jpg', orientation: 'landscape' },
-      { id: 5, title: 'Удостоверение: Методы ранней нейродиагностики', image: '/images/certificates/УДОСТОВЕРЕНИЕ_пов_квалиф_Методы_Ранней_Нейродиагностики.jpg', orientation: 'landscape' },
+      { id: 1, title: 'Диплом о профессиональной переподготовке', image: '/images/certificates/Гантимирова_Наталия_Юрьевна/Диплом_о_проф_переподготовке_Практическая_нейропсихология.jpg', orientation: 'landscape' },
+      { id: 2, title: 'Сертификат Нейро Москва', image: '/images/certificates/Гантимирова_Наталия_Юрьевна/СЕРТИФИКАТ-Нейро-Москва.jpg', orientation: 'portrait' },
+      { id: 3, title: 'Удостоверение: Формирование пространственных представлений', image: '/images/certificates/Гантимирова_Наталия_Юрьевна/Уд_пов_квалификации_Формирование_пространсвенных_представлений.jpg', orientation: 'landscape' },
+      { id: 4, title: 'Удостоверение: Мячики, мешочки', image: '/images/certificates/Гантимирова_Наталия_Юрьевна/УДОСТОВЕРЕНИЕ_пов_квал_Мячики_мешочки.jpg', orientation: 'landscape' },
+      { id: 5, title: 'Удостоверение: Методы ранней нейродиагностики', image: '/images/certificates/Гантимирова_Наталия_Юрьевна/УДОСТОВЕРЕНИЕ_пов_квалиф_Методы_Ранней_Нейродиагностики.jpg', orientation: 'landscape' },
     ],
   },
   {

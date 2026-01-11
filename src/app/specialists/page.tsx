@@ -8,6 +8,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import styles from './specialists.module.css'
 import { specialists, YANDEX_REVIEWS_URL } from '@/data/specialists'
 
+// Создаем Map для быстрого поиска специалистов (O(1) вместо O(n))
+const specialistsMap = new Map(specialists.map(s => [s.id, s]))
+
 function SpecialistsContent() {
   const searchParams = useSearchParams()
   const [selectedSpecialist, setSelectedSpecialist] = useState<typeof specialists[0] | null>(null)
@@ -15,7 +18,7 @@ function SpecialistsContent() {
   useEffect(() => {
     const openId = searchParams.get('open')
     if (openId) {
-      const specialist = specialists.find(s => s.id === parseInt(openId))
+      const specialist = specialistsMap.get(parseInt(openId))
       if (specialist) {
         setSelectedSpecialist(specialist)
       }
@@ -47,7 +50,7 @@ function SpecialistsContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
           >
-            Наши специалисты
+            Наши специалисты — Логопеды, дефектологи, нейропсихологи в Краснодаре
           </motion.h1>
           <motion.p 
             className={styles.subtitle}
@@ -55,7 +58,7 @@ function SpecialistsContent() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Команда профессионалов с многолетним опытом работы
+            Команда из 11 профессионалов с многолетним опытом работы. Логопеды, дефектологи, нейропсихологи, ABA-тераписты, тренеры АФК.
           </motion.p>
         </div>
       </section>

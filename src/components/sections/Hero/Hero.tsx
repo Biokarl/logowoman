@@ -7,7 +7,7 @@ import styles from './Hero.module.css'
 
 export default function Hero() {
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-labelledby="hero-heading">
       <div className={`container ${styles.heroContainer}`}>
         <motion.div 
           className={styles.content}
@@ -16,38 +16,37 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
         >
           <span className={styles.badge}>Центр психо-речевой коррекции</span>
-          <h1 className={styles.title}>
-            {/* Место, где   <span className={styles.highlight}>результат</span> говорит за нас.  */}
+          <h1 id="hero-heading" className={styles.title}>
             Комплексная <span className={styles.highlight}>помощь</span> детям с задержкой в развитии
           </h1>
           <p className={styles.description}>
           Место, где результат говорит за нас.
           Профессиональная команда коррекционных специалистов.
-          Индивидуальные программы абилитации и развития , постоянный мониторинг динамики. Все специалисты постоянно повышают свои компетенции  и владеют самыми современными коррекционными методиками.
+          Индивидуальные программы абилитации и развития, постоянный мониторинг динамики. Все специалисты постоянно повышают свои компетенции и владеют самыми современными коррекционными методиками.
           </p>
           <div className={styles.buttons}>
             <Link href="/#appointment" className="btn btn-primary">
               Записаться на приём
             </Link>
-            <Link href="/specialists" className="btn btn-outline">
+            <Link href="/specialists" className="btn btn-outline" aria-label="Перейти к списку специалистов">
               Наши специалисты
             </Link>
           </div>
           
-          <div className={styles.stats}>
+          <dl className={styles.stats} aria-label="Статистика центра">
             <div className={styles.stat}>
-              <span className={styles.statNumber}>10+</span>
-              <span className={styles.statLabel}>лет опыта</span>
+              <dt className={styles.statNumber}>10+</dt>
+              <dd className={styles.statLabel}>лет опыта</dd>
             </div>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>1000+</span>
-              <span className={styles.statLabel}>счастливых семей</span>
+              <dt className={styles.statNumber}>1000+</dt>
+              <dd className={styles.statLabel}>счастливых семей</dd>
             </div>
             <div className={styles.stat}>
-              <span className={styles.statNumber}>11</span>
-              <span className={styles.statLabel}>специалистов</span>
+              <dt className={styles.statNumber}>11</dt>
+              <dd className={styles.statLabel}>специалистов</dd>
             </div>
-          </div>
+          </dl>
         </motion.div>
 
         <motion.div 
@@ -63,7 +62,7 @@ export default function Hero() {
           <div className={styles.imageContainer}>
             <Image
               src="/images/hero/Команда.JPG"
-              alt="Команда центра Logowoman"
+              alt="Логопеды и дефектологи в Краснодаре | Центр Logowoman"
               fill
               priority
               className={styles.image}

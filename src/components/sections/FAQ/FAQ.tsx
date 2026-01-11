@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import styles from './FAQ.module.css'
 
@@ -49,8 +49,33 @@ export default function FAQ() {
     setOpenId(openId === id ? null : id)
   }
 
+  // Добавляем JSON-LD структурированные данные для FAQ
+  useEffect(() => {
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map(item => ({
+        '@type': 'Question',
+        name: item.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item.answer,
+        },
+      })),
+    }
+
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.text = JSON.stringify(faqSchema)
+    document.head.appendChild(script)
+
+    return () => {
+      document.head.removeChild(script)
+    }
+  }, [])
+
   return (
-    <section className={`section ${styles.faq}`} id="faq">
+    <section className={`section ${styles.faq}`} id="faq" aria-labelledby="faq-heading">
       <div className="container">
         <motion.div 
           className="section-title"
@@ -59,12 +84,14 @@ export default function FAQ() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2>Часто задаваемые вопросы</h2>
+          <h2 id="faq-heading">Часто задаваемые вопросы</h2>
           <p>Ответы на популярные вопросы о наших услугах</p>
         </motion.div>
 
         <motion.div 
           className={styles.list}
+          role="list"
+          aria-label="Часто задаваемые вопросы"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -74,6 +101,7 @@ export default function FAQ() {
             <motion.div
               key={item.id}
               className={`${styles.item} ${openId === item.id ? styles.itemOpen : ''}`}
+              role="listitem"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -83,6 +111,8 @@ export default function FAQ() {
                 className={styles.question}
                 onClick={() => toggleItem(item.id)}
                 aria-expanded={openId === item.id}
+                aria-controls={`faq-answer-${item.id}`}
+                id={`faq-question-${item.id}`}
               >
                 <span>{item.question}</span>
                 <svg 
@@ -93,6 +123,7 @@ export default function FAQ() {
                   fill="none" 
                   stroke="currentColor" 
                   strokeWidth="2"
+                  aria-hidden="true"
                 >
                   <polyline points="6 9 12 15 18 9"/>
                 </svg>
@@ -102,6 +133,9 @@ export default function FAQ() {
                 {openId === item.id && (
                   <motion.div
                     className={styles.answerWrapper}
+                    id={`faq-answer-${item.id}`}
+                    role="region"
+                    aria-labelledby={`faq-question-${item.id}`}
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}

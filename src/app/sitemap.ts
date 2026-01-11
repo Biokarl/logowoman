@@ -1,36 +1,38 @@
 import { MetadataRoute } from 'next'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://logowoman.ru'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://logowoman.ru'
 
+export default function sitemap(): MetadataRoute.Sitemap {
+  const now = new Date()
+  
   return [
     {
-      url: baseUrl,
-      lastModified: new Date(),
+      url: siteUrl,
+      lastModified: now,
       changeFrequency: 'weekly',
-      priority: 1,
+      priority: 1.0,
     },
     {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
+      url: `${siteUrl}/services`,
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/specialists`,
-      lastModified: new Date(),
+      url: `${siteUrl}/specialists`,
+      lastModified: now,
       changeFrequency: 'monthly',
+      priority: 0.9,
+    },
+    {
+      url: `${siteUrl}/certificates`,
+      lastModified: now,
+      changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
-      url: `${baseUrl}/certificates`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/contacts`,
-      lastModified: new Date(),
+      url: `${siteUrl}/contacts`,
+      lastModified: now,
       changeFrequency: 'monthly',
       priority: 0.7,
     },

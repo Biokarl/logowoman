@@ -1,5 +1,6 @@
 'use client'
 
+import { useMemo } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import styles from './services.module.css'
@@ -27,12 +28,20 @@ const itemVariants = {
   }
 }
 
-// Получить специалистов по их ID
-function getSpecialistsByIds(ids: number[]) {
-  return specialists.filter(s => ids.includes(s.id))
-}
+// Создаем Map для быстрого поиска специалистов (O(1) вместо O(n))
+const specialistsMap = new Map(specialists.map(s => [s.id, s]))
 
 export default function ServicesPage() {
+  // Мемоизируем соответствие услуг и специалистов
+  const servicesWithSpecialists = useMemo(() => {
+    return services.map(service => ({
+      ...service,
+      specialists: service.specialistIds
+        .map(id => specialistsMap.get(id))
+        .filter((s): s is typeof specialists[0] => s !== undefined)
+    }))
+  }, [])
+
   return (
     <div className={styles.page}>
       <section className={styles.hero}>
@@ -56,17 +65,16 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className={`section ${styles.services}`}>
+      <section className={`section ${styles.services}`} aria-labelledby="services-heading">
         <div className="container">
+          <h2 id="services-heading" className="visually-hidden">Список услуг</h2>
           <motion.div 
             className={styles.servicesList}
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {services.map((service, index) => {
-              const serviceSpecialists = getSpecialistsByIds(service.specialistIds)
-              
+            {servicesWithSpecialists.map((service, index) => {
               return (
                 <motion.div 
                   key={service.id} 
@@ -93,14 +101,15 @@ export default function ServicesPage() {
 
                     <div className={styles.specialistsList}>
                       <h4 className={styles.specialistsTitle}>Специалисты:</h4>
-                      {serviceSpecialists.map(spec => (
+                      {service.specialists.map(spec => (
                         <div key={spec.id} className={styles.specialist}>
                           <div className={styles.specialistPhoto}>
                             <Image
                               src={spec.photo}
-                              alt={spec.name}
+                              alt={`${spec.name} - ${spec.specialty}`}
                               width={48}
                               height={48}
+                              loading="lazy"
                               style={{ objectFit: 'cover', width: '100%', height: '100%' }}
                             />
                           </div>
@@ -116,10 +125,11 @@ export default function ServicesPage() {
                   <div className={styles.cardImage}>
                     <Image
                       src={service.image}
-                      alt={service.title}
+                      alt={`${service.title} - ${service.description}`}
                       fill
                       sizes="(max-width: 1000px) 100vw, 400px"
                       priority={index === 0}
+                      loading={index === 0 ? 'eager' : 'lazy'}
                       style={{ objectFit: 'cover' }}
                     />
                   </div>

@@ -7,17 +7,18 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} role="contentinfo">
       <div className={`container ${styles.footerContainer}`}>
         <div className={styles.footerTop}>
           <div className={styles.footerBrand}>
-            <Link href="/" className={styles.logo}>
+            <Link href="/" className={styles.logo} aria-label="Перейти на главную страницу Logowoman">
               <Image 
                 src="/images/hero/logo.jpg" 
-                alt="Logowoman" 
+                alt="Logowoman - Центр психо-речевой коррекции" 
                 width={50} 
                 height={50}
                 className={styles.logoImage}
+                loading="lazy"
               />
               <span className={styles.logoText}>Logowoman</span>
             </Link>
@@ -30,7 +31,7 @@ export default function Footer() {
           <div className={styles.footerNav}>
             <div className={styles.navColumn}>
               <h4 className={styles.navTitle}>Навигация</h4>
-              <nav className={styles.navLinks}>
+              <nav className={styles.navLinks} aria-label="Навигация по сайту">
                 <Link href="/services">Услуги</Link>
                 <Link href="/specialists">Специалисты</Link>
                 <Link href="/certificates">Сертификаты</Link>
@@ -40,7 +41,7 @@ export default function Footer() {
 
             <div className={styles.navColumn}>
               <h4 className={styles.navTitle}>Услуги</h4>
-              <nav className={styles.navLinks}>
+              <nav className={styles.navLinks} aria-label="Список услуг">
                 {services.map(service => (
                   <Link key={service.id} href={`/services#${service.id}`}>{service.title}</Link>
                 ))}

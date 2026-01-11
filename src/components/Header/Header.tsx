@@ -79,36 +79,37 @@ export default function Header() {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} role="banner">
         <div className={`container ${styles.headerContainer}`}>
-          <Link href="/" className={styles.logo} onClick={closeMobileMenu}>
+          <Link href="/" className={styles.logo} onClick={closeMobileMenu} aria-label="Перейти на главную страницу Logowoman">
             <Image 
               src="/images/hero/logo.jpg" 
-              alt="Logowoman" 
+              alt="Logowoman - Центр психо-речевой коррекции" 
               width={60} 
               height={60}
               className={styles.logoImage}
+              priority
             />
             <span className={styles.logoText}>Logowoman</span>
           </Link>
 
-          <nav className={styles.nav}>
+          <nav className={styles.nav} aria-label="Основная навигация">
             <div 
               className={styles.navItemWithDropdown}
               ref={servicesRef}
               onMouseEnter={handleServicesMouseEnter}
               onMouseLeave={handleServicesMouseLeave}
             >
-              <Link href="/services" className={styles.navLink}>
+              <Link href="/services" className={styles.navLink} aria-expanded={isServicesOpen} aria-haspopup="true">
                 Услуги
-                <svg className={`${styles.dropdownArrow} ${isServicesOpen ? styles.arrowOpen : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg className={`${styles.dropdownArrow} ${isServicesOpen ? styles.arrowOpen : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
               
-              <div className={`${styles.dropdown} ${isServicesOpen ? styles.dropdownOpen : ''}`}>
+              <div className={`${styles.dropdown} ${isServicesOpen ? styles.dropdownOpen : ''}`} role="menu" aria-label="Список услуг">
                 {services.map((service) => (
-                  <Link key={service.href} href={service.href} className={styles.dropdownItem}>
+                  <Link key={service.href} href={service.href} className={styles.dropdownItem} role="menuitem">
                     <span className={styles.dropdownTitle}>{service.title}</span>
                     <span className={styles.dropdownDesc}>{service.description}</span>
                   </Link>
@@ -125,22 +126,22 @@ export default function Header() {
               onMouseEnter={handleCertificatesMouseEnter}
               onMouseLeave={handleCertificatesMouseLeave}
             >
-              <Link href="/certificates" className={styles.navLink}>
+              <Link href="/certificates" className={styles.navLink} aria-expanded={isCertificatesOpen} aria-haspopup="true">
                 Сертификаты
-                <svg className={`${styles.dropdownArrow} ${isCertificatesOpen ? styles.arrowOpen : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <svg className={`${styles.dropdownArrow} ${isCertificatesOpen ? styles.arrowOpen : ''}`} width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M3 4.5L6 7.5L9 4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
               
-              <div className={`${styles.dropdown} ${isCertificatesOpen ? styles.dropdownOpen : ''}`}>
+              <div className={`${styles.dropdown} ${isCertificatesOpen ? styles.dropdownOpen : ''}`} role="menu" aria-label="Список специалистов с сертификатами">
                 {specialistsWithCertificates.map((specialist) => (
-                  <Link key={specialist.id} href={`/certificates?specialist=${specialist.id}`} className={styles.dropdownItem}>
+                  <Link key={specialist.id} href={`/certificates?specialist=${specialist.id}`} className={styles.dropdownItem} role="menuitem">
                     <span className={styles.dropdownTitle}>{specialist.name}</span>
                     <span className={styles.dropdownDesc}>Сертификатов: {specialist.certificatesCount}</span>
                   </Link>
                 ))}
                 {specialistsWithCertificates.length === 0 && (
-                  <div className={styles.dropdownItem}>
+                  <div className={styles.dropdownItem} role="menuitem">
                     <span className={styles.dropdownDesc}>Сертификаты скоро появятся</span>
                   </div>
                 )}
